@@ -1,0 +1,64 @@
+﻿@model REST_Agencia_Viajes.Viajes_Disponibles
+
+@{
+    Layout=null;
+}
+<script src="~/Scripts/CRUD/Validar_Campos.js"></script>
+<h2 style="text-align: center;">Registrar Viaje</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.Label("Codigo",new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.COD_Viaje, new { @class = "form-control", @style = "width:65%;", @required = "required", @maxlength = "15" })
+                @Html.ValidationMessageFor(model => model.COD_Viaje, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Nro. Plazas", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.NUM_Plazas, new { @class = "form-control" , @type="number", @style = "width:30%;", @required = "required" })
+                @Html.ValidationMessageFor(model => model.NUM_Plazas, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Origen",new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+               @Html.TextBoxFor(model => model.Lugar_Origen, new { @class = "form-control" ,@style = "width:65%;", @required = "required" } )
+                @Html.ValidationMessageFor(model => model.Lugar_Origen, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Destino",  new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Lugar_Destino, new { @class = "form-control", @style = "width:65%;", @required = "required" })
+                @Html.ValidationMessageFor(model => model.Lugar_Destino, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Precio, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Precio, new { @class = "form-control", @style = "width:65%;", @onkeypress = "return validarNro(event)", @maxlength = "10" })
+                @Html.ValidationMessageFor(model => model.Precio, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10" style="text-align:right;">
+                <input type="submit" value="Registrar" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+

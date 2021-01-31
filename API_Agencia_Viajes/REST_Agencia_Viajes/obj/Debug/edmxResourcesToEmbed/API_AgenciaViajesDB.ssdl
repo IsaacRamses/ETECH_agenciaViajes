@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="API_AgenciaViajesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Viajeros">
+    <Key>
+      <PropertyRef Name="ID_Viajeros" />
+    </Key>
+    <Property Name="ID_Viajeros" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Cedula" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Direccion" Type="varchar" MaxLength="2000" Nullable="false" />
+    <Property Name="Telefono" Type="varchar" MaxLength="12" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Viajeros_Viajes">
+    <Key>
+      <PropertyRef Name="ID_Viajeros_Viajes" />
+    </Key>
+    <Property Name="ID_Viajeros_Viajes" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_FK_Viajeros" Type="int" Nullable="false" />
+    <Property Name="ID_FK_Viajes_Disponibles" Type="int" Nullable="false" />
+    <Property Name="Activo" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Viajes_Disponibles">
+    <Key>
+      <PropertyRef Name="ID_Viajes_Disponibles" />
+    </Key>
+    <Property Name="ID_Viajes_Disponibles" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="COD_Viaje" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="NUM_Plazas" Type="int" Nullable="false" />
+    <Property Name="Lugar_Origen" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="Lugar_Destino" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="Precio" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Viajeros">
+    <End Role="Viajeros" Type="Self.Viajeros" Multiplicity="1" />
+    <End Role="Viajeros_Viajes" Type="Self.Viajeros_Viajes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Viajeros">
+        <PropertyRef Name="ID_Viajeros" />
+      </Principal>
+      <Dependent Role="Viajeros_Viajes">
+        <PropertyRef Name="ID_FK_Viajeros" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Viajes_Disponibles">
+    <End Role="Viajes_Disponibles" Type="Self.Viajes_Disponibles" Multiplicity="1" />
+    <End Role="Viajeros_Viajes" Type="Self.Viajeros_Viajes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Viajes_Disponibles">
+        <PropertyRef Name="ID_Viajes_Disponibles" />
+      </Principal>
+      <Dependent Role="Viajeros_Viajes">
+        <PropertyRef Name="ID_FK_Viajes_Disponibles" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="SP_Traer_Viajeros_Viajes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="API_AgenciaViajesModelStoreContainer">
+    <EntitySet Name="Viajeros" EntityType="Self.Viajeros" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Viajeros_Viajes" EntityType="Self.Viajeros_Viajes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Viajes_Disponibles" EntityType="Self.Viajes_Disponibles" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Viajeros" Association="Self.FK_Viajeros">
+      <End Role="Viajeros" EntitySet="Viajeros" />
+      <End Role="Viajeros_Viajes" EntitySet="Viajeros_Viajes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Viajes_Disponibles" Association="Self.FK_Viajes_Disponibles">
+      <End Role="Viajes_Disponibles" EntitySet="Viajes_Disponibles" />
+      <End Role="Viajeros_Viajes" EntitySet="Viajeros_Viajes" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

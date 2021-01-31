@@ -1,0 +1,61 @@
+﻿@model IEnumerable<REST_Agencia_Viajes.Viajes_Disponibles>
+
+
+<script src="@Url.Content("~/Scripts/CRUD/Create.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/CRUD/Edit.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/CRUD/Delete.js")" type="text/javascript"></script>
+
+<h2 style="text-align: center;" >Viajes Disponibles</h2>
+
+<p>
+    <input type="button" onclick="Create('@ViewBag.Controller')" value="Registar Viaje" class="btn btn-primary" />  
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Codigo de Viaje
+        </th>
+        <th>
+            Nº de Plazas
+        </th>
+        <th>
+           Lugar de Origen
+        </th>
+        <th>
+           Lugar de Destino
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Precio)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.COD_Viaje)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NUM_Plazas)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lugar_Origen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lugar_Destino)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Precio)
+        </td>
+        <td>
+            <!-- Boton Editar -->
+            <input type="button" value="Modificar Viaje" class="btn btn-warning" onclick="Edit('@ViewBag.Controller',@item.ID_Viajes_Disponibles)" />
+            <!-- Boton Elimiar -->
+            <input type="button" value="Eliminar Viaje" class="btn btn-danger" onclick="Fun_Viajes_Disponibles_Delete(@item.ID_Viajes_Disponibles,'@item.COD_Viaje','@item.Lugar_Origen','@item.Lugar_Destino')" />
+        </td>
+    </tr>
+}
+
+</table>
+
+<div id="Modal"></div>

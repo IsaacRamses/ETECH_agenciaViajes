@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="API_AgenciaViajesModelStoreContainer" CdmEntityContainer="API_AgenciaViajesDB">
+    <EntitySetMapping Name="Viajeros">
+      <EntityTypeMapping TypeName="API_AgenciaViajesModel.Viajeros">
+        <MappingFragment StoreEntitySet="Viajeros">
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+          <ScalarProperty Name="ID_Viajeros" ColumnName="ID_Viajeros" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Viajeros_Viajes">
+      <EntityTypeMapping TypeName="API_AgenciaViajesModel.Viajeros_Viajes">
+        <MappingFragment StoreEntitySet="Viajeros_Viajes">
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="ID_FK_Viajes_Disponibles" ColumnName="ID_FK_Viajes_Disponibles" />
+          <ScalarProperty Name="ID_FK_Viajeros" ColumnName="ID_FK_Viajeros" />
+          <ScalarProperty Name="ID_Viajeros_Viajes" ColumnName="ID_Viajeros_Viajes" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Viajes_Disponibles">
+      <EntityTypeMapping TypeName="API_AgenciaViajesModel.Viajes_Disponibles">
+        <MappingFragment StoreEntitySet="Viajes_Disponibles">
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <ScalarProperty Name="Lugar_Destino" ColumnName="Lugar_Destino" />
+          <ScalarProperty Name="Lugar_Origen" ColumnName="Lugar_Origen" />
+          <ScalarProperty Name="NUM_Plazas" ColumnName="NUM_Plazas" />
+          <ScalarProperty Name="COD_Viaje" ColumnName="COD_Viaje" />
+          <ScalarProperty Name="ID_Viajes_Disponibles" ColumnName="ID_Viajes_Disponibles" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SP_Traer_Viajeros_Viajes" FunctionName="API_AgenciaViajesModel.Store.SP_Traer_Viajeros_Viajes">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="API_AgenciaViajesModel.SP_Traer_Viajeros_Viajes_Result">
+          <ScalarProperty Name="ID_Viajeros" ColumnName="ID_Viajeros" />
+          <ScalarProperty Name="ID_Viajeros_Viajes" ColumnName="ID_Viajeros_Viajes" />
+          <ScalarProperty Name="ID_Viajes_Disponibles" ColumnName="ID_Viajes_Disponibles" />
+          <ScalarProperty Name="COD_Viaje" ColumnName="COD_Viaje" />
+          <ScalarProperty Name="Lugar_Origen" ColumnName="Lugar_Origen" />
+          <ScalarProperty Name="Lugar_Destino" ColumnName="Lugar_Destino" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

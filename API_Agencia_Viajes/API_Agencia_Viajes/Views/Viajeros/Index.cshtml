@@ -1,0 +1,55 @@
+﻿@model IEnumerable<REST_Agencia_Viajes.Viajeros>
+
+<script src="@Url.Content("~/Scripts/CRUD/Create.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/CRUD/Edit.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/CRUD/Delete.js")" type="text/javascript"></script>
+<h2 style="text-align: center;">Viajeros Registrados</h2>
+
+<p>
+    <input type="button" onclick="Create('@ViewBag.Controller')" value="Registar Viajero" class="btn btn-primary"/>  
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Cedula)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th style="width: 40%">
+            @Html.DisplayNameFor(model => model.Direccion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telefono)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cedula)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Direccion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Telefono)
+        </td>
+        <td>
+
+        <!-- Boton Editar -->
+        <input type="button" value="Editar Información" class="btn btn-warning" onclick="Edit('@ViewBag.Controller',@item.ID_Viajeros)" />
+        <!-- Boton Elimiar -->
+       <input type="button" value="Eliminar Viajero"  class="btn btn-danger" onclick="Fun_Viajeros_Delete(@item.ID_Viajeros,'@item.Nombre')" />
+
+        </td>
+    </tr>
+}
+
+</table>
+
+<div id="Modal"></div>

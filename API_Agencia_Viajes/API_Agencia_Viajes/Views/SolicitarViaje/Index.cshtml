@@ -1,0 +1,50 @@
+﻿
+<h2 style="text-align: center;">Viajeros con Viaje</h2>
+
+<script src="@Url.Content("~/Scripts/CRUD/Create.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/CRUD/Delete.js")" type="text/javascript"></script>
+
+
+<p>
+    <input type="button" onclick="Create('@ViewBag.Controller')" value="Solicitar Viaje" class="btn btn-primary" />
+</p>
+<table class="table">
+    <tr>
+        <th>Viajero</th>
+        <th>Cedula</th>
+        <th>Viajes</th>
+    </tr>
+
+    @foreach (var item in @ViewBag.Viajeros)
+    {
+        <tr>
+            <td>@item.Nombre</td>
+            <td> @item.Cedula</td>
+            <td>
+                @foreach (var item2 in ViewBag.ViajerosViajes)
+                {
+                    if (item.ID_Viajeros == @item2.ID_Viajeros)
+                    {
+                        <ul>
+                            @item2.COD_Viaje
+
+                            (@item2.Lugar_Origen
+                             -
+                            @item2.Lugar_Destino)
+                            Precio: 
+                            @item2.Precio 
+                            
+                            <input type="button" value="Eliminar" class="btn btn-danger" onclick="Fun_Viajes_Delete('@item2.ID_Viajeros_Viajes','@item.Nombre','@item2.Lugar_Origen','@item2.Lugar_Destino')" />          
+                        </ul>
+
+                    }
+                  
+                }
+            </td>
+            
+        </tr>
+    }
+</table>
+
+<div id="Modal"></div>
+

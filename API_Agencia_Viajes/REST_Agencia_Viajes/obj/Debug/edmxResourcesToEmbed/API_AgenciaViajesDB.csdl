@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="API_AgenciaViajesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="API_AgenciaViajesDB" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Viajeros" EntityType="API_AgenciaViajesModel.Viajeros" />
+    <EntitySet Name="Viajeros_Viajes" EntityType="API_AgenciaViajesModel.Viajeros_Viajes" />
+    <EntitySet Name="Viajes_Disponibles" EntityType="API_AgenciaViajesModel.Viajes_Disponibles" />
+    <AssociationSet Name="FK_Viajeros" Association="API_AgenciaViajesModel.FK_Viajeros">
+      <End Role="Viajeros" EntitySet="Viajeros" />
+      <End Role="Viajeros_Viajes" EntitySet="Viajeros_Viajes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Viajes_Disponibles" Association="API_AgenciaViajesModel.FK_Viajes_Disponibles">
+      <End Role="Viajes_Disponibles" EntitySet="Viajes_Disponibles" />
+      <End Role="Viajeros_Viajes" EntitySet="Viajeros_Viajes" />
+    </AssociationSet>
+    <FunctionImport Name="SP_Traer_Viajeros_Viajes" ReturnType="Collection(API_AgenciaViajesModel.SP_Traer_Viajeros_Viajes_Result)" />
+  </EntityContainer>
+  <EntityType Name="Viajeros">
+    <Key>
+      <PropertyRef Name="ID_Viajeros" />
+    </Key>
+    <Property Name="ID_Viajeros" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Cedula" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Direccion" Type="String" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="Telefono" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Viajeros_Viajes" Relationship="API_AgenciaViajesModel.FK_Viajeros" FromRole="Viajeros" ToRole="Viajeros_Viajes" />
+  </EntityType>
+  <EntityType Name="Viajeros_Viajes">
+    <Key>
+      <PropertyRef Name="ID_Viajeros_Viajes" />
+    </Key>
+    <Property Name="ID_Viajeros_Viajes" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_FK_Viajeros" Type="Int32" Nullable="false" />
+    <Property Name="ID_FK_Viajes_Disponibles" Type="Int32" Nullable="false" />
+    <Property Name="Activo" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Viajeros" Relationship="API_AgenciaViajesModel.FK_Viajeros" FromRole="Viajeros_Viajes" ToRole="Viajeros" />
+    <NavigationProperty Name="Viajes_Disponibles" Relationship="API_AgenciaViajesModel.FK_Viajes_Disponibles" FromRole="Viajeros_Viajes" ToRole="Viajes_Disponibles" />
+  </EntityType>
+  <EntityType Name="Viajes_Disponibles">
+    <Key>
+      <PropertyRef Name="ID_Viajes_Disponibles" />
+    </Key>
+    <Property Name="ID_Viajes_Disponibles" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="COD_Viaje" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NUM_Plazas" Type="Int32" Nullable="false" />
+    <Property Name="Lugar_Origen" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Lugar_Destino" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Precio" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <NavigationProperty Name="Viajeros_Viajes" Relationship="API_AgenciaViajesModel.FK_Viajes_Disponibles" FromRole="Viajes_Disponibles" ToRole="Viajeros_Viajes" />
+  </EntityType>
+  <Association Name="FK_Viajeros">
+    <End Type="API_AgenciaViajesModel.Viajeros" Role="Viajeros" Multiplicity="1" />
+    <End Type="API_AgenciaViajesModel.Viajeros_Viajes" Role="Viajeros_Viajes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Viajeros">
+        <PropertyRef Name="ID_Viajeros" />
+      </Principal>
+      <Dependent Role="Viajeros_Viajes">
+        <PropertyRef Name="ID_FK_Viajeros" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Viajes_Disponibles">
+    <End Type="API_AgenciaViajesModel.Viajes_Disponibles" Role="Viajes_Disponibles" Multiplicity="1" />
+    <End Type="API_AgenciaViajesModel.Viajeros_Viajes" Role="Viajeros_Viajes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Viajes_Disponibles">
+        <PropertyRef Name="ID_Viajes_Disponibles" />
+      </Principal>
+      <Dependent Role="Viajeros_Viajes">
+        <PropertyRef Name="ID_FK_Viajes_Disponibles" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="SP_Traer_Viajeros_Viajes_Result">
+    <Property Type="Int32" Name="ID_Viajeros" Nullable="false" />
+    <Property Type="Int32" Name="ID_Viajeros_Viajes" Nullable="false" />
+    <Property Type="Int32" Name="ID_Viajes_Disponibles" Nullable="false" />
+    <Property Type="String" Name="COD_Viaje" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Lugar_Origen" Nullable="false" MaxLength="150" />
+    <Property Type="String" Name="Lugar_Destino" Nullable="false" MaxLength="150" />
+    <Property Type="Decimal" Name="Precio" Nullable="false" Precision="18" Scale="2" />
+  </ComplexType>
+</Schema>

@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API_Agencia_Viajes", "API_Agencia_Viajes\API_Agencia_Viajes.csproj", "{F718902B-1A47-4CCA-B9D4-A32CA323B057}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "REST_Agencia_Viajes", "REST_Agencia_Viajes\REST_Agencia_Viajes.csproj", "{2F62D2CF-4D96-423C-AD74-B99799943FE8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F718902B-1A47-4CCA-B9D4-A32CA323B057}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F718902B-1A47-4CCA-B9D4-A32CA323B057}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F718902B-1A47-4CCA-B9D4-A32CA323B057}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F718902B-1A47-4CCA-B9D4-A32CA323B057}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F62D2CF-4D96-423C-AD74-B99799943FE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F62D2CF-4D96-423C-AD74-B99799943FE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F62D2CF-4D96-423C-AD74-B99799943FE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F62D2CF-4D96-423C-AD74-B99799943FE8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,12 @@
+D:\Users\Ramsicx\Documents\Visual Studio 2015\Projects\API_Agencia_Viajes\REST_Agencia_Viajes\bin\Debug\REST_Agencia_Viajes.dll.config
+D:\Users\Ramsicx\Documents\Visual Studio 2015\Projects\API_Agencia_Viajes\REST_Agencia_Viajes\bin\Debug\REST_Agencia_Viajes.dll
+D:\Users\Ramsicx\Documents\Visual Studio 2015\Projects\API_Agencia_Viajes\REST_Agencia_Viajes\bin\Debug\REST_Agencia_Viajes.pdb
+D:\Users\Ramsicx\Documents\Visual Studio 2015\Projects\API_Agencia_Viajes\REST_Agencia_Viajes\bin\Debug\EntityFramework.dll
+D:\Users\Ramsicx\Documents\Visual Studio 2015\Projects\API_Agencia_Viajes\REST_Agencia_Viajes\bin\Debug\EntityFramework.SqlServer.dll
+D:\Users\Ramsicx\Documents\Visual Studio 2015\Projects\API_Agencia_Viajes\REST_Agencia_Viajes\bin\Debug\EntityFramework.xml
+D:\Users\Ramsicx\Documents\Visual Studio 2015\Projects\API_Agencia_Viajes\REST_Agencia_Viajes\bin\Debug\EntityFramework.SqlServer.xml
+D:\Users\Ramsicx\Documents\Visual Studio 2015\Projects\API_Agencia_Viajes\REST_Agencia_Viajes\bin\Debug\es\EntityFramework.resources.dll
+D:\Users\Ramsicx\Documents\Visual Studio 2015\Projects\API_Agencia_Viajes\REST_Agencia_Viajes\bin\Debug\es\EntityFramework.SqlServer.resources.dll
+D:\Users\Ramsicx\Documents\Visual Studio 2015\Projects\API_Agencia_Viajes\REST_Agencia_Viajes\obj\Debug\REST_Agencia_Viajes.csprojResolveAssemblyReference.cache
+D:\Users\Ramsicx\Documents\Visual Studio 2015\Projects\API_Agencia_Viajes\REST_Agencia_Viajes\obj\Debug\REST_Agencia_Viajes.dll
+D:\Users\Ramsicx\Documents\Visual Studio 2015\Projects\API_Agencia_Viajes\REST_Agencia_Viajes\obj\Debug\REST_Agencia_Viajes.pdb
